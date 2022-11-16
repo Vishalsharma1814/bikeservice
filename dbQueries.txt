@@ -1,0 +1,48 @@
+create table mstmaterialunit
+(
+rowid int identity(1,1),
+material_code varchar(500) primary key ,
+material_name varchar(500) not null default '',
+unit varchar(500) not null default '',
+createdt datetime not null default ''
+)
+
+
+
+create table mst_inventory
+(
+rowid int identity(1,1),
+material varchar(500) primary key ,
+unit varchar(255) not null default '',
+available_qty numeric(18,2) not null default 0.00,
+alert_qty int not null default 0,
+descr varchar (500),
+createdt datetime not null default ''
+)
+
+
+create table mst_material_rate
+(
+rowid int identity(1,1),
+material varchar(500) primary key ,
+unit varchar(255) not null default '',
+purchase_qty numeric(18,2) not null default 0.00,
+purchase_rate numeric(18,2) not null default 0.00,
+createdt datetime not null default ''
+)
+
+create table customer
+(
+rowid int identity(1,1),
+vehichle_number varchar(500) primary key ,
+owner_name varchar(500) not null default '',
+mobile_number varchar(255) not null default '',
+email varchar(500) not null default '',
+image varchar(500) not null default '',
+address varchar(255) not null default '',
+chechis_number varchar(255) not null default '',
+engine_number varchar(255) not null default '',
+bike_company varchar(255) not null default '',
+model varchar(255) not null default '',
+createdt datetime not null default ''
+)
