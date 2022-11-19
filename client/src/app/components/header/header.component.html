@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Bike</a>
+  <div class="container-fluid" style="margin-right: 80px;">
+    <a class="navbar-brand" routerLink="/dashboard" routerLinkActive="active" ariaCurrentWhenActive="page">Bike</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,21 +18,16 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/service-job" routerLinkActive="active" ariaCurrentWhenActive="page">Service/Job</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
-
-          </ul>
-        </li>
       </ul>
-      <!-- <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
+      <div class="d-flex" style="margin-right:40px">
+        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i style="border: 1px solid black; padding:10px; border-radius:50%" class="fa fa-user fa-lg"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li ><a class="dropdown-item" routerLink="/personal-information">Profile</a></li>
+          <li ><a class="dropdown-item" style="cursor:pointer" (click)="logout()">Logout</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

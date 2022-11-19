@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bikeService")
-public class MainController {
+@RequestMapping("/user")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+public class UserController {
     @Autowired
     UserService userService;
 
