@@ -3,6 +3,7 @@ package bikeservice.service.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -24,6 +25,13 @@ public class User {
 
     @Column(name = "usercode")
     private String usercode;
+
+    @Column(name="password")
+    private String password;
+
+    @Column(name = "date_created")
+    private Date createdt;
+
 
 
     public User() {
@@ -87,6 +95,22 @@ public class User {
 
     public String getAddress() {
         return address;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getCreatedt() {
+        return createdt;
+    }
+
+    public void setCreatedt(Date createdt) {
+        this.createdt = createdt;
     }
 
     public void setAddress(String address) {
