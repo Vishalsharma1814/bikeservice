@@ -4,7 +4,8 @@ rowid int identity(1,1),
 material_code varchar(500) primary key ,
 material_name varchar(500) not null default '',
 unit varchar(500) not null default '',
-createdt datetime not null default ''
+status varchar(500) not null default 'No',
+createdt datetime not null default getDate()
 )
 
 
@@ -17,7 +18,8 @@ unit varchar(255) not null default '',
 available_qty numeric(18,2) not null default 0.00,
 alert_qty int not null default 0,
 descr varchar (500),
-createdt datetime not null default ''
+status varchar(500) not null default 'No',
+createdt datetime not null default getDate()
 )
 
 
@@ -28,7 +30,8 @@ material varchar(500) primary key ,
 unit varchar(255) not null default '',
 purchase_qty numeric(18,2) not null default 0.00,
 purchase_rate numeric(18,2) not null default 0.00,
-createdt datetime not null default ''
+status varchar(500) not null default 'No',
+createdt datetime not null default getDate()
 )
 
 create table customer
@@ -44,7 +47,8 @@ chechis_number varchar(255) not null default '',
 engine_number varchar(255) not null default '',
 bike_company varchar(255) not null default '',
 model varchar(255) not null default '',
-createdt datetime not null default ''
+status varchar(500) not null default 'No',
+createdt datetime not null default getDate()
 )
 
 
@@ -53,5 +57,17 @@ id int identity(1,1),
 name varchar(500) not null default '',
 email varchar(500) not null default '',
 address varchar(500) not null default '',
-usercode varchar(500) not null default '' primary key
+usercode varchar(500) not null default '' primary key,
+password varchar(500) not null default '',
+status varchar(500) not null default 'No',
+createdt datetime not null default getDate()
 );
+
+create table mstunit
+(
+rowid int identity(1,1),
+unitcode varchar(255) primary key ,
+unit varchar(255) not null default '',
+status varchar(500) not null default 'NO',
+createdt datetime not null default getdate()
+)

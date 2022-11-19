@@ -26,47 +26,22 @@ public class User {
     @Column(name = "usercode")
     private String usercode;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "date_created")
+    @Column(name = "createdt")
     private Date createdt;
-
-
-
     public User() {
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(userId, user.userId) && Objects.equals(name, user.name) && Objects.equals(email, user.email) && Objects.equals(address, user.address) && Objects.equals(usercode, user.usercode);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userId, name, email, address, usercode);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", usercode='" + usercode + '\'' +
-                '}';
-    }
-
-    public User(Long userId, String name, String email, String address, String usercode) {
+    public User(Long userId, String name, String email, String address, String usercode, String password, Date createdt) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.address = address;
         this.usercode = usercode;
+        this.password = password;
+        this.createdt = createdt;
     }
 
     public Long getUserId() {
@@ -123,5 +98,34 @@ public class User {
 
     public void setUsercode(String usercode) {
         this.usercode = usercode;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getCreatedt() {
+        return createdt;
+    }
+
+    public void setCreatedt(Date createdt) {
+        this.createdt = createdt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userId, user.userId) && Objects.equals(name, user.name) && Objects.equals(email, user.email) && Objects.equals(address, user.address) && Objects.equals(usercode, user.usercode) && Objects.equals(password, user.password) && Objects.equals(createdt, user.createdt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId, name, email, address, usercode, password, createdt);
     }
 }
