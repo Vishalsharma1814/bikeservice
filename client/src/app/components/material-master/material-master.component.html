@@ -1,1 +1,44 @@
-<p>material-master works!</p>
+
+    <h1 class="text-center">Add Material</h1>
+<div class="container p-5">
+  <form [formGroup]="materialForm">
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="matName">Materila name</label>
+          <input
+          formControlName="materialName"
+            type="text"
+            class="form-control"
+            name="materialName"
+            aria-describedby="emailHelp"
+            placeholder="Enter material name"
+          />
+        </div>
+        <div *ngIf="this.isSubmitted == true && this.materialForm.hasError('required', 'materialName')" class="text-danger">
+          Material is required
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="unit">Unit</label>
+          <select class="form-select" formControlName="unit" name="unit" >
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <div *ngIf="this.isSubmitted == true && this.materialForm.hasError('required', 'unit')" class="text-danger">
+            Unit is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button type="button" class="btn m-1 btn-primary" (click)="saveMaterial()">Save</button>
+      <button type="button" class="btn m-1 btn-danger" (click)="cancelMat()">Cancel</button>
+    </div>
+  </form>
+</div>
