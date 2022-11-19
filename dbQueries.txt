@@ -55,3 +55,15 @@ email varchar(500) not null default '',
 address varchar(500) not null default '',
 usercode varchar(500) not null default '' primary key
 );
+
+create table mstunit
+(
+rowid int identity(1,1),
+unitcode varchar(255) primary key ,
+unit varchar(255) not null default '',
+status varchar(500) not null default 'NO',
+createdt datetime not null default getdate()
+)
+
+alter table sys_user add password varchar(500) not null default '';
+alter table sys_user add createdt datetime not null default '';

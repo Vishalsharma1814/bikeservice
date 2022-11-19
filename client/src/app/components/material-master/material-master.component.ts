@@ -23,7 +23,7 @@ export class MaterialMasterComponent implements OnInit {
       materialName: ["", Validators.required],
       unit:["", Validators.required],
       createdt:new FormControl(new Date().toISOString())
-    })
+    });
   }
   saveMaterial(){
     this.isSubmitted = true;
