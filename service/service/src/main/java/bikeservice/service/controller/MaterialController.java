@@ -17,4 +17,8 @@ public class MaterialController {
     public Material saveMaterial(@RequestBody AddMaterialDto addMaterialDto){
         return materialService.saveMaterial(addMaterialDto);
     }
+    @GetMapping("/hello")
+    public String hello(){
+        return "Hello";
+    }
 }

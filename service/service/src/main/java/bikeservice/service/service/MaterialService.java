@@ -20,4 +20,5 @@ public class MaterialService {
         material.setMaterialCode(matcode);
         return materialRepository.save(material);
     }
+
 }
