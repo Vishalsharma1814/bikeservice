@@ -8,5 +8,5 @@ import java.util.Date;
 public class AddMaterialDto {
     private String materialName;
     private String unit;
-    private Date createdt;
+    private String matCode;
 }

@@ -6,14 +6,9 @@
           <div class="col-4">
             <div class="form-group">
               <label for="matName">Materila name</label>
-              <input
-              formControlName="materialName"
-                type="text"
-                class="form-control"
-                name="materialName"
-                aria-describedby="emailHelp"
-                placeholder="Enter material name"
-              />
+              <select class="form-select" (change)="setUnit($event)" formControlName="materialName" name="unit" >
+                <option *ngFor="let m of materialList" [value]="m.materialCode"  >{{m.materialName}}</option>
+              </select>
             </div>
             <div *ngIf="this.isSubmitted == true && this.inventoryForm.hasError('required', 'materialName')" class="text-danger">
               Material is required
@@ -22,13 +17,14 @@
           <div class="col-4">
             <div class="form-group">
               <label for="unit">Unit</label>
-              <select class="form-select" formControlName="unit" name="unit" >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
+              <input
+                type="text"
+                class="form-control"
+                name="unit"
+                formControlName="unit"
+                aria-describedby="emailHelp"
+                (value)="this.unit"
+              />
               <div *ngIf="this.isSubmitted == true && this.inventoryForm.hasError('required', 'unit')" class="text-danger">
                 Unit is required
               </div>
@@ -43,7 +39,6 @@
                 class="form-control"
                 name="materialName"
                 aria-describedby="emailHelp"
-                placeholder="Enter material name"
               />
             </div>
           </div>

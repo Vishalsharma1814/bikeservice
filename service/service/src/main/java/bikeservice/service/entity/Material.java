@@ -24,32 +24,23 @@ public class Material {
     @Column(name = "unit")
     private String unit;
 
+    @Column(name = "status")
+    private String status;
+
     @Column(name = "createdt")
     private Date createdt;
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Material material = (Material) o;
-        return Objects.equals(rowid, material.rowid) && Objects.equals(materialCode, material.materialCode) && Objects.equals(materialName, material.materialName) && Objects.equals(unit, material.unit) && Objects.equals(createdt, material.createdt);
+        return Objects.equals(rowid, material.rowid) && Objects.equals(materialCode, material.materialCode) && Objects.equals(materialName, material.materialName) && Objects.equals(unit, material.unit) && Objects.equals(status, material.status) && Objects.equals(createdt, material.createdt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(rowid, materialCode, materialName, unit, createdt);
-    }
-
-    @Override
-    public String toString() {
-        return "Material{" +
-                "rowid=" + rowid +
-                ", materialCode='" + materialCode + '\'' +
-                ", materialName='" + materialName + '\'' +
-                ", unit='" + unit + '\'' +
-                ", createdt=" + createdt +
-                '}';
+        return Objects.hash(rowid, materialCode, materialName, unit, status, createdt);
     }
 }
 
