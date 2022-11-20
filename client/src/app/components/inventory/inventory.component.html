@@ -32,37 +32,44 @@
           </div>
           <div class="col-4">
             <div class="form-group">
-              <label for="matName">Available qty</label>
+              <label for="availableQuantity">Available qty</label>
               <input
-              disabled
-                type="text"
+              onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                type="number"
+                min="0"
                 class="form-control"
-                name="materialName"
+                name="availableQuantity"
+                formControlName="availableQuantity"
                 aria-describedby="emailHelp"
+                placeholder="Enter available quantity"
               />
             </div>
           </div>
           <div class="col-4 mt-2">
             <div class="form-group">
-              <label for="matName">Alert/Danger qty</label>
+              <label for="alertQuantity">Alert/Danger qty</label>
               <input
-                type="text"
+              onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+              type="number"
+              min="0"
                 class="form-control"
-                name="materialName"
+                name="alertQuantity"
+                formControlName="alertQuantity"
                 aria-describedby="emailHelp"
-                placeholder="Enter material name"
+                placeholder="Enter alert quantity"
               />
             </div>
           </div>
           <div class="col-4 mt-2">
             <div class="form-group">
-              <label for="matName">Description</label>
+              <label for="description">Description</label>
               <input
                 type="text"
                 class="form-control"
-                name="materialName"
+                name="description"
+                formControlName="description"
                 aria-describedby="emailHelp"
-                placeholder="Enter material name"
+                placeholder="Enter description"
               />
             </div>
           </div>
@@ -70,11 +77,13 @@
             <div class="form-group">
               <label for="matName">MRP</label>
               <input
-                type="text"
+              onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                type="number"
+                min="0"
                 class="form-control"
-                name="materialName"
+                name="mrp"
                 aria-describedby="emailHelp"
-                placeholder="Enter material name"
+                placeholder="Enter MRP"
               />
             </div>
           </div>

@@ -23,16 +23,17 @@ export class InventoryComponent implements OnInit {
     this.inventoryForm = this.formBuilder.group({
       materialName: ["", Validators.required],
       unit:[{value: '', disabled: true}, Validators.required],
-      createdt:new FormControl(new Date().toISOString())
+      description:["", Validators.required],
+      mrp:["", Validators.required],
+      alertQuantity:["", Validators.required],
+      availableQuantity:["", Validators.required]
     })
     this.apiService.getRequest("/material/getAllMaterials").subscribe((d)=>{
       this.materialList = d;
-      console.log(d);
     })
   }
 
   saveMaterial(){
-    console.log(this.inventoryForm.controls['createdt'].value);
     this.isSubmitted = true;
     if(this.inventoryForm.invalid){
       setTimeout(()=> this.isSubmitted = false, 2000);
@@ -42,13 +43,10 @@ export class InventoryComponent implements OnInit {
 
   cancelMat(){
     this.inventoryForm.reset();
-    console.log("clicked!!");
   }
   setUnit(e:any){
     this.apiService.getRequest(`/material/findByMatCode/${e.target.value}`).subscribe((d)=>{
-      console.log(d);
       this.inventoryForm.controls['unit'].setValue(d.unit);
-      console.log(this.inventoryForm.controls['unit'].value);
     });
   }
 }

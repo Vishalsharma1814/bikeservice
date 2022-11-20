@@ -71,3 +71,11 @@ unit varchar(255) not null default '',
 status varchar(500) not null default 'NO',
 createdt datetime not null default getdate()
 )
+
+
+insert into dbo.mstunit (unitcode, unit, status)
+values('UNI00003', 'Kg', 'No');
+insert into dbo.mstunit (unitcode, unit, status)
+values('UNI00002', 'Pcs', 'No');
+insert into dbo.mstunit (unitcode, unit, status)
+values('UNI00001', 'Litres', 'No')
