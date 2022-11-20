@@ -31,6 +31,8 @@ public class User {
 
     @Column(name = "status")
     private  String status;
+    @Column(name = "createdt")
+    private Date createdt;
 
     public String getStatus() {
         return status;
@@ -40,8 +42,7 @@ public class User {
         this.status = status;
     }
 
-    @Column(name = "createdt")
-    private Date createdt;
+
     public User() {
     }
 

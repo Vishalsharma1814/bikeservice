@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
  loginForm!:FormGroup;
  isSubmitted=false;
-  constructor(private http:HttpClient, private formBuilder:FormBuilder,private router:Router) { }
+  constructor(private http:HttpClient, private formBuilder:FormBuilder,private router:Router, private apiService:ApiService) { }
 
 Login(){
     this.isSubmitted = true;
@@ -25,27 +25,9 @@ Login(){
     let login = {
       email: this.loginForm.controls['email'].value,
       password:this.loginForm.controls['password'].value,
-     
+
     }
-
-    console.log(login)
-//   try {
-
-//   this.api.getAPI(Id).subscribe( // this.api is my api service and getAPI is present there
-//     (data: any) => {
-//       if (data == null) {
-//         throw 'Empty response';
-//       }
-//     },
-//     (error: HttpErrorResponse) => {
-//       console.log(error);
-//     };
-
-// } catch(e) {
-//   console.log(e); 
-// }
-
-    this.http.put('http://localhost:8081/user/login', login).subscribe((e:any)=>{
+    this.apiService.putRequest('/user/login', login).subscribe((e:any)=>{
       console.log(e)
       if(e==null){
         alert("invalid Credentials")
@@ -54,13 +36,27 @@ Login(){
         sessionStorage.setItem("userName",e.name)
         sessionStorage.setItem("isLoggedIn","true")
         this.router.navigateByUrl('/dashboard')
-        
+
       }
-      
     },(err)=>{
       console.log(err)
     })
-  
+    // this.http.put('http://localhost:8081/user/login', login).subscribe((e:any)=>{
+    //   console.log(e)
+    //   if(e==null){
+    //     alert("invalid Credentials")
+    //   }else{
+    //     sessionStorage.setItem("usercode",e.usercode)
+    //     sessionStorage.setItem("userName",e.name)
+    //     sessionStorage.setItem("isLoggedIn","true")
+    //     this.router.navigateByUrl('/dashboard')
+
+    //   }
+
+    // },(err)=>{
+    //   console.log(err)
+    // })
+
   }
 
   ngOnInit(): void {

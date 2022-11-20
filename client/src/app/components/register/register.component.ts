@@ -36,33 +36,28 @@ export class RegisterComponent implements OnInit {
           ]
         ],
         confirmPassword: ['', Validators.required],
-        acceptTerms: [false, Validators.requiredTrue]
+        // acceptTerms: [false, Validators.requiredTrue]
       },
-     
+
     );
 
   }
 
   Register(){
-    console.log("hhuuuuu")
-
     this.isSubmitted = true;
     if(this.registerForm.invalid){
       setTimeout(()=> this.isSubmitted = false, 2000);
-      alert("Registration failed")
+      alert("Registration failed");
+      return;
     }
-    
+
 
     let register={
       name:this.registerForm.controls['name'].value,
       address:this.registerForm.controls['address'].value,
       email:this.registerForm.controls['email'].value,
       password:this.registerForm.controls['password'].value,
-
-
     }
-     
-   console.log(register)
 
    this.apiService.putRequest("/user/saveUser",register).subscribe((e)=>{
     console.log(e)

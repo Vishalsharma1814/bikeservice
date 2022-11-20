@@ -8,7 +8,7 @@ export class AuthGuardService {
 
   constructor(public router: Router) { }
   canActivate(): boolean {
-    if (sessionStorage.getItem("isLoggedIn")=="False") {
+    if (sessionStorage.getItem("isLoggedIn")=="false") {
       this.router.navigate(['/']);
       return false;
     }
