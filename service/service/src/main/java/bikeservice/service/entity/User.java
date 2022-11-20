@@ -29,6 +29,17 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "status")
+    private  String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Column(name = "createdt")
     private Date createdt;
     public User() {
@@ -72,18 +83,6 @@ public class User {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getUsercode() {
-        return usercode;
-    }
-
-    public void setUsercode(String usercode) {
-        this.usercode = usercode;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -99,6 +98,22 @@ public class User {
     public void setCreatedt(Date createdt) {
         this.createdt = createdt;
     }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getUsercode() {
+        return usercode;
+    }
+
+    public void setUsercode(String usercode) {
+        this.usercode = usercode;
+    }
+
+
+
+
 
     @Override
     public boolean equals(Object o) {

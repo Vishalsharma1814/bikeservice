@@ -1,5 +1,6 @@
 package bikeservice.service.controller;
 
+import bikeservice.service.dto.LoginDTO;
 import bikeservice.service.entity.User;
 import bikeservice.service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class UserController {
+public class
+UserController {
     @Autowired
     UserService userService;
 
@@ -18,8 +20,14 @@ public class UserController {
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
-    @PostMapping("/saveUser")
+    @PutMapping("/saveUser")
     public User saveUser(@RequestBody User user){
         return userService.saveUser(user);
+    }
+
+    @PutMapping("/login")
+    public User loginuser(@RequestBody LoginDTO loginDTO){
+
+        return  userService.loginUser(loginDTO);
     }
 }

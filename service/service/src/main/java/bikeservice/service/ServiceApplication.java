@@ -14,4 +14,6 @@ public class ServiceApplication {
 		SpringApplication.run(ServiceApplication.class, args);
 		System.out.println("Server running");
 	}
+
+
 }
