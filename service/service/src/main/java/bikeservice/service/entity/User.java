@@ -29,6 +29,17 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "status")
+    private  String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Column(name = "createdt")
     private Date createdt;
     public User() {
@@ -100,21 +111,9 @@ public class User {
         this.usercode = usercode;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
-    public Date getCreatedt() {
-        return createdt;
-    }
 
-    public void setCreatedt(Date createdt) {
-        this.createdt = createdt;
-    }
 
     @Override
     public boolean equals(Object o) {

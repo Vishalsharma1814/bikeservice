@@ -11,6 +11,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(nativeQuery = true, value = "select concat('USR',REPLICATE(0,5-len(isNULL(max(cast(convert(varchar,substring(usercode,4,15)) as int)),0)+1)), isNULL(max(cast(convert(varchar,substring(usercode,4,15)) as int)),0)+1) as cd from sys_user where usercode like 'USR%'\n")
     public String getUserCode();
 
-    @Query(nativeQuery = true,value ="SELECT * from sys_user where email=:email;\n")
-    public User getByEmailID(@Param("email") String email);
+    @Query(nativeQuery = true,value =" select * from sys_user s where s.email= :email and s.password=:password  and s.status='No'  ")
+    public User getByEmailID(@Param("email") String email,@Param("password") String password);
+
+
 }

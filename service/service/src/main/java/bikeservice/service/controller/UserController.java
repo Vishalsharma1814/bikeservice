@@ -20,13 +20,14 @@ UserController {
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
-    @PostMapping("/saveUser")
+    @PutMapping("/saveUser")
     public User saveUser(@RequestBody User user){
         return userService.saveUser(user);
     }
 
-    @PostMapping("/login")
-    public String loginuser(@RequestBody LoginDTO loginDTO){
+    @PutMapping("/login")
+    public User loginuser(@RequestBody LoginDTO loginDTO){
+
         return  userService.loginUser(loginDTO);
     }
 }

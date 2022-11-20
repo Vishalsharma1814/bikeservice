@@ -25,6 +25,7 @@ public class UserService {
         user1.setName(user.getName());
         user1.setEmail(user.getEmail());
         user1.setAddress(user.getAddress());
+        user1.setStatus("No");
         user1.setUsercode(userRepository.getUserCode());
         user1.setPassword(user.getPassword());
         user1.setCreatedt(new Date());
@@ -32,13 +33,9 @@ public class UserService {
         return userRepository.save(user1);
     }
 
-    public String loginUser(LoginDTO loginDTO){
-        User user= userRepository.getByEmailID(loginDTO.getEmail());
+    public User loginUser(LoginDTO loginDTO){
 
-        if(user.getPassword()==loginDTO.getPassword()){
-            return "Sucess";
-        }
-        return "False";
+      return userRepository.getByEmailID(loginDTO.getEmail(),loginDTO.getPassword());
 
     }
 }

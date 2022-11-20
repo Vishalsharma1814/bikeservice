@@ -9,16 +9,17 @@ import { MaterialMasterComponent } from './components/material-master/material-m
 import { PersonalInformationComponent } from './components/personal-information/personal-information.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ServiceJobComponent } from './components/service-job/service-job.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'add-customer', component: AddCustomerComponent},
-  {path: 'inventory', component: InventoryComponent},
-  {path: 'material-master', component: MaterialMasterComponent},
-  {path: 'personal-information', component: PersonalInformationComponent},
-  {path: 'service-job', component: ServiceJobComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuardService]},
+  {path: 'add-customer', component: AddCustomerComponent,canActivate:[AuthGuardService]},
+  {path: 'inventory', component: InventoryComponent,canActivate:[AuthGuardService]},
+  {path: 'material-master', component: MaterialMasterComponent,canActivate:[AuthGuardService]},
+  {path: 'personal-information', component: PersonalInformationComponent,canActivate:[AuthGuardService]},
+  {path: 'service-job', component: ServiceJobComponent,canActivate:[AuthGuardService]},
 ];
 
 @NgModule({
