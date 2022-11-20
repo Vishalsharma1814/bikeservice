@@ -15,15 +15,19 @@ import { ApiService } from 'src/app/services/api.service';
 export class MaterialMasterComponent implements OnInit {
   materialForm!:FormGroup;
   isSubmitted=false;
+  unitList:any;
 
   constructor(private formBuilder:FormBuilder, private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.materialForm = this.formBuilder.group({
       materialName: ["", Validators.required],
-      unit:["", Validators.required],
-      createdt:new FormControl(new Date().toISOString())
+      unit:["", Validators.required]
     });
+    this.apiService.getRequest("/material/getAllUnits").subscribe((d)=>{
+      console.log(d);
+      this.unitList = d;
+    })
   }
   saveMaterial(){
     this.isSubmitted = true;
@@ -33,8 +37,7 @@ export class MaterialMasterComponent implements OnInit {
     }
     let matEntry = {
       materialName: this.materialForm.controls['materialName'].value,
-      unit:this.materialForm.controls['unit'].value,
-      createdt:this.materialForm.controls['createdt'].value
+      unit:this.materialForm.controls['unit'].value
     }
     console.log(matEntry);
     this.apiService.putRequest("/material/saveMaterial", matEntry).subscribe((d)=>{
