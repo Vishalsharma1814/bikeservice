@@ -18,29 +18,62 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="Name"
                                          formControlName="name"
-                                            placeholder=" Name">
+                                         placeholder=" Name">
+                                         <div *ngIf="this.isSubmitted == true && this.registerForm.hasError('required', 'name')" class="text-danger">
+                                          Name is required
+                                        </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="address"
                                            formControlName="address"
                                             placeholder="address">
+                                            <div *ngIf="this.isSubmitted == true && this.registerForm.hasError('required', 'address')" class="text-danger">
+                                              Address is required
+                                            </div>
+                                            <div *ngIf="this.isSubmitted == true && this.registerForm.hasError('minlength', 'address')" class="text-danger">
+                                              Address must be atleast 6 charachers
+                                            </div>
+                                            <div *ngIf="this.isSubmitted == true && this.registerForm.hasError('maxlength', 'address')" class="text-danger">
+                                              Address should not exceed 30 charachers
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="email"
                                         formControlName="email"
                                         placeholder="Email Address">
+                                        <div *ngIf="this.isSubmitted == true && this.registerForm.hasError('required', 'email')" class="text-danger">
+                                          Email is required
+                                        </div>
+                                        <div *ngIf="this.isSubmitted == true && this.registerForm.hasError('email', 'email')" class="text-danger">
+                                          Enter valid email
+                                        </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
                                            formControlName="password"
                                             id="InputPassword" placeholder="Password">
+                                            <div *ngIf="this.isSubmitted == true && this.registerForm.hasError('required', 'password')" class="text-danger">
+                                              Password is required
+                                            </div>
+                                            <div *ngIf="this.isSubmitted == true && this.registerForm.hasError('minlength', 'password')" class="text-danger">
+                                              Password must be atleast 6 charachers
+                                            </div>
+                                            <div *ngIf="this.isSubmitted == true && this.registerForm.hasError('maxlength', 'password')" class="text-danger">
+                                              Password should not exceed 40 charachers
+                                            </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
                                         formControlName="confirmPassword"
-                                        id="RepeatPassword" placeholder="Repeat Password">
+                                        id="RepeatPassword" placeholder="Confirm Password">
+                                        <div *ngIf="this.isSubmitted == true && this.registerForm.hasError('required', 'confirmPassword')" class="text-danger">
+                                         Please confirm the password
+                                        </div>
+                                        <!-- <div *ngIf="this.isSubmitted == true && !this.passwordmatch" class="text-danger">
+                                          Password does not match
+                                         </div> -->
                                     </div>
                                 </div>
 
