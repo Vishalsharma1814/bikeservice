@@ -17,4 +17,9 @@ public class InventoryController {
     public Inventory saveInventory(@RequestBody InventorySaveDTO inventorySaveDTO){
         return inventoryService.updateInventory(inventorySaveDTO);
     }
+
+    @GetMapping("/getInventoryByMaterial/{matCode}")
+    public Inventory getInventory(@PathVariable String matCode){
+        return inventoryService.getInventoryByMaterial(matCode);
+    }
 }

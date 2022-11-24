@@ -26,7 +26,7 @@ public class InventoryService {
             inventory.setAlertQty(inventorySaveDTO.getAlertQty());
             inventory.setDescription(inventorySaveDTO.getDescription());
             inventory.setMaterial(inventorySaveDTO.getMaterial());
-            inventory.setStatus(inventory.getStatus());
+           inventory.setStatus(i.getStatus());
             inventory.setAvailableQty(inventorySaveDTO.getAvailableQty());
             inventory.setCreatedt(new Date());
             inventory.setUnit(inventorySaveDTO.getUnit());
@@ -41,5 +41,8 @@ public class InventoryService {
             materialRateRepository.save(materialRate);
             return inventoryRepository.save(inventory);
 
+    }
+    public Inventory getInventoryByMaterial(String material){
+        return inventoryRepository.findByMaterial(material);
     }
 }

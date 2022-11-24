@@ -41,7 +41,6 @@
                 name="availableQuantity"
                 formControlName="availableQuantity"
                 aria-describedby="emailHelp"
-                placeholder="Enter available quantity"
               />
             </div>
           </div>
@@ -62,6 +61,22 @@
           </div>
           <div class="col-4 mt-2">
             <div class="form-group">
+              <label for="alertQuantity">Add qty</label>
+              <input
+              onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+              type="number"
+                min="0"
+                class="form-control"
+                name="addQuantity"
+                formControlName="addQuantity"
+                (change)="changeAvailableqty($event)"
+                aria-describedby="emailHelp"
+                placeholder="Add quantity"
+              />
+            </div>
+          </div>
+          <div class="col-4 mt-2">
+            <div class="form-group">
               <label for="description">Description</label>
               <input
                 type="text"
@@ -73,6 +88,10 @@
               />
             </div>
           </div>
+          <div class="col-12 text-center">
+            <button type="button" (click)="checkEntry()" class="btn btn-primary m-1 mt-5 ">Add</button>
+          </div>
+          <div class="col-4"></div>
           <div class="col-4 mt-2">
             <div class="form-group">
               <label for="matName">MRP</label>
@@ -81,6 +100,7 @@
                 type="number"
                 min="0"
                 class="form-control"
+                formControlName="mrp"
                 name="mrp"
                 aria-describedby="emailHelp"
                 placeholder="Enter MRP"
