@@ -1,1 +1,104 @@
-<p>service-job works!</p>
+<div class="container">
+  <form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Bike Number</label>
+      <select class="form-control" id="bikeNo" formControlName="bikeNo">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Service Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="serviceDate"
+        formControlName="serviceDate"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Last Service </label>
+      <input
+        type="date"
+        class="form-control"
+        id="lastService"
+        formControlName="lastService"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Service Details</label>
+      <textarea
+        class="form-control"
+        id="serviceFullDetails"
+        rows="3"
+        formControlName="serviceFullDetails"
+      ></textarea>
+    </div>
+
+    Skills:
+    <div formArrayName="skills">
+      <div *ngFor="let skill of skills.controls; let i = index">
+        <div [formGroupName]="i">
+          {{ i }}
+          <div class="form-group">
+            <label>Material Name </label>
+            <input
+              type="text"
+              class="form-control"
+              id="materialName"
+              formControlName="materialName"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Material Quantity </label>
+            <input
+              type="number"
+              class="form-control"
+              id="materialQuantity"
+              formControlName="materialQuantity"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Material Rate </label>
+            <input
+              type="number"
+              class="form-control"
+              id="materialRate"
+              formControlName="materialRate"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Total Material Rate </label>
+            <input
+              type="number"
+              class="form-control"
+              id="totalMaterialRate"
+              formControlName="totalMaterialRate"
+            />
+          </div>
+
+          <button (click)="removeSkill(i)">Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      <button type="submit">Submit</button>
+    </p>
+  </form>
+
+  <p>
+    <button type="button" (click)="addSkills()">Add</button>
+  </p>
+
+  {{ this.skillsForm.value | json }}
+</div>
