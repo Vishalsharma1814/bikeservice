@@ -1,1 +1,27 @@
-<p>personal-information works!</p>
+<div class="container box">
+
+  <h2 >MY Profile</h2>
+  <img src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" class="rounded-circle mb-3" style="width: 150px;"
+  alt="Avatar" />
+
+  <form *ngIf="profileForm" class="user" [formGroup]="profileForm">
+
+<div class="form-outline mb-8">
+  <input type="text" id="form7Example1"   formControlName="name" />
+  <label class="form-label" >Name</label>
+</div>
+
+
+<div class="form-outline mb-8">
+  <input type="email" id="form7Example2"   formControlName="email" />
+  <label class="form-label" >Email address</label>
+</div>
+
+<div class="form-outline mb-8">
+  <input type="adress" id="form7Example2"   formControlName="address" />
+  <label class="form-label" for=>Address</label>
+</div>
+  </form>
+
+<button class="btn btn-primary">Change  Profile</button>
+</div>

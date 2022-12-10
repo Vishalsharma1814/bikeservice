@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { MaterialMasterComponent } from './components/material-master/material-master.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { AddCustomerComponent } from './components/add-customer/add-customer.component';
-import { PersonalInformationComponent } from './components/personal-information/personal-information.component';
-import { ServiceJobComponent } from './components/service-job/service-job.component';
+
+
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -20,7 +20,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSelectModule} from '@angular/material/select';
+import {MatSelectModule} from '@angular/material/select';import { PersonalInformationComponent } from './components/personal-information/personal-information.component';
+import { ServiceJobComponent } from './components/service-job/service-job.component';
+
 
 
 @NgModule({
