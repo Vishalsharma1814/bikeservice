@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
     Inventory findByMaterial(String material);
-
 }

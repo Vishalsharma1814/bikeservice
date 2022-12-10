@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -7,22 +7,42 @@ import {
 } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
 import { ApiService } from 'src/app/services/api.service';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
+export interface matData{
+  rowid:string,
+  materialName:string,
+  unit:string
+}
 @Component({
   selector: 'app-material-master',
   templateUrl: './material-master.component.html',
   styleUrls: ['./material-master.component.css'],
 })
+
 export class MaterialMasterComponent implements OnInit {
   materialForm!: FormGroup;
   isSubmitted = false;
   unitList: any;
-
+  materialList:any;
+  displayedColumn:string[]=['rowid','materialName','unit','actions'];
+  dataSource: MatTableDataSource<matData>;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
     private toast: NgToastService
-  ) {}
+  ) {
+    this.apiService.getRequest("/material/getAllMaterials").subscribe((d)=>{
+      this.materialList = d;
+      console.log(this.materialList);
+      this.dataSource = new MatTableDataSource(this.materialList);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+
+    })
+  }
 
   ngOnInit(): void {
     this.materialForm = this.formBuilder.group({
@@ -32,6 +52,7 @@ export class MaterialMasterComponent implements OnInit {
     this.apiService.getRequest('/material/getAllUnits').subscribe((d) => {
       this.unitList = d;
     });
+
   }
   saveMaterial() {
     this.isSubmitted = true;
@@ -93,5 +114,13 @@ export class MaterialMasterComponent implements OnInit {
       summary: 'Your Warn Message',
       duration: 5000,
     });
+  }
+  onLinkClick(e:any){}
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }
